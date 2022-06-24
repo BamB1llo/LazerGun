@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(CanvasGroup))]
 public class GameOverScreen : MonoBehaviour
@@ -12,6 +11,9 @@ public class GameOverScreen : MonoBehaviour
     [SerializeField] private Player _player;
 
     private CanvasGroup _gameOverGroup;
+    private float _ressetTimerValue = 0f;
+
+    public event UnityAction<float> ResetTimer;
 
     private void OnEnable()
     {
@@ -35,6 +37,7 @@ public class GameOverScreen : MonoBehaviour
 
     private void OnDied()
     {
+        ResetTimer?.Invoke(_ressetTimerValue);
         _gameOverGroup.alpha = 1;
         Time.timeScale = 0;
     }

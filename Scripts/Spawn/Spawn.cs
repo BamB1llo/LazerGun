@@ -1,10 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Spawn : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> _enemyPrefab;
+    [SerializeField] private List<Enemy> _enemyPrefab;
     [SerializeField] private List<Transform> _spawnPoint;
     [SerializeField] private float _secondsBetweenSpawn;
 

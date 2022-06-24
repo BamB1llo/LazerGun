@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -12,6 +10,7 @@ public class Enemy : MonoBehaviour
     private Weapon _curentWeapon;
     private float _elapsedTime;
     private float _lifeTime = 30;
+    private int _minHealth = 0;
 
     private void Start()
     {
@@ -26,6 +25,11 @@ public class Enemy : MonoBehaviour
         Die();
     }
 
+    public void ApplyDamage(int damage)
+    {
+        _health -= damage;
+    }
+
     private void Shoot()
     {
         if (_elapsedTime >= _secondsBetweenShoot)
@@ -36,14 +40,9 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void ApplyDamage(int damage)
-    {
-        _health -= damage;
-    }
-
     private void Die()
     {
-        if (_elapsedTime >= _lifeTime || _health <= 0)
+        if (_elapsedTime >= _lifeTime || _health <= _minHealth)
             Destroy(gameObject);
     }
 }

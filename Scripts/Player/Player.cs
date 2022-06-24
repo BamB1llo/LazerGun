@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,16 +8,13 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform _shootPoint;
 
     private Weapon _currentWeapon;
-    private int _currentWeaponNumber;
-    private int _currentHealth;
-
+    
     public event UnityAction<int> HealthChanged;
     public event UnityAction Died;
     
     private void Start()
     {
         _currentWeapon = _weapon;
-        _currentHealth = _health;
         HealthChanged?.Invoke(_health);
     }
 

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +8,7 @@ public class Paralax : MonoBehaviour
 
     private RawImage _image;
     private float _imagePositionY;
+    private float _imagePositionX = 0f;
     
     private void Start()
     {
@@ -20,6 +19,6 @@ public class Paralax : MonoBehaviour
     {
         _imagePositionY += _speed * Time.deltaTime;
 
-        _image.uvRect = new Rect(0, _imagePositionY, _image.uvRect.width, _image.uvRect.height);
+        _image.uvRect = new Rect(_imagePositionX, _imagePositionY, _image.uvRect.width, _image.uvRect.height);
     }
 }
